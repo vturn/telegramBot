@@ -61,7 +61,7 @@ class telegramBot {
 
     public function getChatInfo(){
         // read incoming info and grab the chatID
-        $content = json_decode(file_get_contents("php://input"), true);
+        $update = json_decode(file_get_contents("php://input"), true);
         $chatID = $update["message"]["chat"]["id"];
         $message = $update["message"]["text"];
         $this->updateChatList($chatID);
@@ -70,7 +70,7 @@ class telegramBot {
     }
 
     public function setWebhook($https_url){
-        $result = file_get_contents(API_URL . 'setWebhook?url=' . $https_url);
+        $result = $this->callAPI('setWebhook', array('url' =>$https_url));
         return json_decode($result, true);
     }
 

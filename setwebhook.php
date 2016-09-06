@@ -7,4 +7,8 @@ if (strlen($https_url) == 0){
 $tb = new telegramBot($config);
 $result = $tb->setWebhook($https_url);
 
-var_dump($result);
+if (isset($result['ok'])){
+    echo $result['description'];
+} else {
+    die('Unknown error!')
+}
