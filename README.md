@@ -9,3 +9,4 @@
  4. Run `setwebhook.php` to enable Telegram Webhook
  5. Use your own Telegram to add your bot, and send some message. You may customize feedback message by updating `webhook.php`.
  6. Run `broadcast.php` to broadcast message to users who registered your bot.
+ 7. Run `channel.php` to broadcast message to the channel specified.
