@@ -32,6 +32,10 @@ class telegramBot {
         return $this->callAPI('sendMessage', array('chat_id' => $chatId, 'text' => urlencode($message)));
     }
 
+    public function sendHTMLMessage ($chatId, $message) {
+        return $this->callAPI('sendMessage', array('chat_id' => $chatId, 'text' => urlencode($message), 'disable_web_page_preview' => 'true', 'parse_mode' => 'html'));
+    }
+
     public function updateChatList($chatID = null){
         if ($chatID == null){
             return;
