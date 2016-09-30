@@ -10,5 +10,5 @@ $result = $tb->setWebhook($https_url);
 if (isset($result['ok'])){
     echo $result['description'];
 } else {
-    die('Unknown error!')
+    die('Unknown error!');
 }
