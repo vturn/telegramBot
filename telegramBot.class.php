@@ -28,12 +28,24 @@ class telegramBot {
         return file_get_contents($url);
     }
 
-    public function sendMessage ($chatId, $message) {
-        return $this->callAPI('sendMessage', array('chat_id' => $chatId, 'text' => urlencode($message)));
+    public function sendMessage ($chatId, $message, $silent = false) {
+        $msgContent = array('chat_id' => $chatId,
+            'text' => urlencode($message));
+        if ($silent == true){
+            $msgContent['disable_notification'] = 'true';
+        }
+        return $this->callAPI('sendMessage', $msgContent);
     }
 
-    public function sendHTMLMessage ($chatId, $message) {
-        return $this->callAPI('sendMessage', array('chat_id' => $chatId, 'text' => urlencode($message), 'disable_web_page_preview' => 'true', 'parse_mode' => 'html'));
+    public function sendHTMLMessage ($chatId, $message, $silent = false) {
+        $msgContent = array('chat_id' => $chatId,
+            'text' => urlencode($message),
+            'disable_web_page_preview' => 'true',
+            'parse_mode' => 'html');
+        if ($silent == true){
+            $msgContent['disable_notification'] = 'true';
+        }
+        return $this->callAPI('sendMessage', $msgContent);
     }
 
     public function updateChatList($chatID = null){
